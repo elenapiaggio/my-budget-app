@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Error from './Error';
-
-const Form = () => {
+ 
+const Form = ({ saveBudget, saveRemainingBudget }) => {
 
   const [ quantity, saveQuantity ] = useState(0);
   const [ error, saveError ] = useState(false);
@@ -12,12 +12,14 @@ const Form = () => {
 
   const addBudget = (e) => {
     e.preventDefault();
-    // validate
+    
     if(quantity < 1 || isNaN(quantity)){
       saveError(true);
       return;
     }
     saveError(false);
+    saveBudget(quantity);
+    saveRemainingBudget(quantity);
   }
 
   return (
