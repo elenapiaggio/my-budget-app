@@ -25,6 +25,6 @@ In the project directory, you can run:
 The url to repository and deployed project:
 
 - [Repository Frontend Link](https://github.com/elenapiaggio/my-budget-app)
-- [Deploy Link](https://my-budget-app.netlify.app/)
+- [Deploy Link](https://my-presupost-app.netlify.app/)
 
 Made with :heart: by Elena
