@@ -2,8 +2,10 @@ import React from 'react';
 
 function App() {
   return (
-    <div>
-      <h1>Bundle</h1>
+    <div className='container'>
+      <header>
+        <h1>WEEKLY BUDGET</h1>
+      </header>
     </div>
   );
 }
