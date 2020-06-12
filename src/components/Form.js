@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Error from './Error';
  
-const Form = ({ saveBudget, saveRemainingBudget }) => {
+const Form = ({ saveBudget, saveRemainingBudget, updateForm }) => {
 
   const [ quantity, saveQuantity ] = useState(0);
   const [ error, saveError ] = useState(false);
@@ -13,20 +13,24 @@ const Form = ({ saveBudget, saveRemainingBudget }) => {
   const addBudget = (e) => {
     e.preventDefault();
     
+    // Validation
     if(quantity < 1 || isNaN(quantity)){
       saveError(true);
       return;
     }
+
+    // If it has been validation
     saveError(false);
     saveBudget(quantity);
     saveRemainingBudget(quantity);
+    updateForm(false);
   }
 
   return (
     <Fragment>
-      <h2>Write your budget</h2>
+      <h2>My expense</h2>
       {
-        error ? <Error message='The budget is incorrect!!!'/> : null
+        error ? <Error message='The expense is incorrect!!!'/> : null
       }
       <form
         onSubmit={addBudget}
@@ -34,7 +38,7 @@ const Form = ({ saveBudget, saveRemainingBudget }) => {
         <input
           type="number"
           className="u-full-width"
-          placeholder="Add your budget"
+          placeholder="Add your expensive"
           onChange={defineBudget}
         ></input>
         <input
