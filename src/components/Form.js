@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import Error from './Error';
+import PropTypes from 'prop-types';
  
 const Form = ({ saveBudget, saveRemainingBudget, updateForm }) => {
 
@@ -51,5 +52,11 @@ const Form = ({ saveBudget, saveRemainingBudget, updateForm }) => {
     </Fragment>
   );
 };
+
+Form.propTypes = {
+  saveBudget: PropTypes.func.isRequired,
+  saveRemainingBudget: PropTypes.func.isRequired,
+  updateForm: PropTypes.func.isRequired,
+}
 
 export default Form;

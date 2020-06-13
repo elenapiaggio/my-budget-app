@@ -1,5 +1,6 @@
 import React from "react";
 import Expensive from "./Expensive";
+import PropTypes from 'prop-types';
 
 const ListBudget = ({ expensives }) => {
   return (
@@ -16,5 +17,9 @@ const ListBudget = ({ expensives }) => {
     </div>
   );
 };
+
+ListBudget.propTypes = {
+  expensives: PropTypes.array.isRequired,
+}
 
 export default ListBudget;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const Expensive = ({ expensive }) => (
   <li className="gastos">
@@ -8,5 +9,9 @@ const Expensive = ({ expensive }) => (
     </p>
   </li>
 );
+
+Expensive.propTypes = {
+  expensive: PropTypes.object.isRequired,
+}
 
 export default Expensive;
