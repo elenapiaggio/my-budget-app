@@ -1,21 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./components/Form";
 import FormBudget from "./components/FormBudget";
-import ListBudget from './components/ListBudget';
-import BudgetControl from './components/BudgetControl';
+import ListBudget from "./components/ListBudget";
+import BudgetControl from "./components/BudgetControl";
 
 function App() {
+  // State definition
   const [budget, saveBudget] = useState(0);
   const [remainingBudget, saveRemainingBudget] = useState(0);
   const [showForm, updateForm] = useState(true);
   const [expensives, saveExpensives] = useState([]);
+  const [expensive, saveExpensive] = useState({});
+  const [createExpensive, saveCreateExpensive] = useState(false);
 
-  const addNewExpensive = expensive => {
-    saveExpensives([
-      ...expensives,
-      expensive,
-    ])
-  }
+  // UseEffect for update the remaining
+  useEffect(() => {
+    if (createExpensive) {
+      // add new budget
+      saveExpensives([...expensives, expensive]);
+
+      // Subtraction from the current budget
+      const budgetRemaining = remainingBudget - expensive.quantity;
+      saveRemainingBudget(budgetRemaining);
+
+      // Reset to false
+      saveCreateExpensive(false);
+    }
+  }, [expensive]);
 
   return (
     <div className="container">
@@ -32,17 +43,16 @@ function App() {
           ) : (
             <div className="row">
               <div className="one-half column">
-                <FormBudget 
-                  addNewExpensive = {addNewExpensive}
+                <FormBudget
+                  saveExpensive={saveExpensive}
+                  saveCreateExpensive={saveCreateExpensive}
                 />
               </div>
               <div className="one-half column">
-                <ListBudget
-                  expensives = {expensives}
-                />
+                <ListBudget expensives={expensives} />
                 <BudgetControl
-                  budget = {budget}
-                  remainingBudget = {remainingBudget}
+                  budget={budget}
+                  remainingBudget={remainingBudget}
                 />
               </div>
             </div>

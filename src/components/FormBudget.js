@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Error from './Error';
 import shortid from 'shortid';
 
-const FormBudget = ( {addNewExpensive} ) => {
+const FormBudget = ({ saveExpensive, saveCreateExpensive }) => {
   const [ expensiveName, saveExpensiveName ] = useState("");
   const [ quantity, saveQuantity ] = useState(0);
   const [ error, saveError ] = useState(false);
@@ -25,7 +25,8 @@ const FormBudget = ( {addNewExpensive} ) => {
     }
 
     // set expensive to principal component
-   addNewExpensive(expensive);
+    saveExpensive(expensive);
+    saveCreateExpensive(true)
 
     // reset form
     saveExpensiveName('');
