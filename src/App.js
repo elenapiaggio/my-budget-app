@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "./components/Form";
 import FormBudget from "./components/FormBudget";
 import ListBudget from './components/ListBudget';
+import BudgetControl from './components/BudgetControl';
 
 function App() {
   const [budget, saveBudget] = useState(0);
@@ -38,6 +39,10 @@ function App() {
               <div className="one-half column">
                 <ListBudget
                   expensives = {expensives}
+                />
+                <BudgetControl
+                  budget = {budget}
+                  remainingBudget = {remainingBudget}
                 />
               </div>
             </div>
