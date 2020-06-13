@@ -26,7 +26,7 @@ function App() {
       // Reset to false
       saveCreateExpensive(false);
     }
-  }, [expensive]);
+  }, [expensive, expensives, createExpensive, remainingBudget]);
 
   return (
     <div className="container">

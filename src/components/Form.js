@@ -28,7 +28,7 @@ const Form = ({ saveBudget, saveRemainingBudget, updateForm }) => {
 
   return (
     <Fragment>
-      <h2>My expense</h2>
+      <h2>My Budget</h2>
       {
         error ? <Error message='The expense is incorrect!!!'/> : null
       }
@@ -38,13 +38,14 @@ const Form = ({ saveBudget, saveRemainingBudget, updateForm }) => {
         <input
           type="number"
           className="u-full-width"
-          placeholder="Add your expensive"
+          placeholder="Add your budget e.g. 100"
           onChange={defineBudget}
         ></input>
         <input
           type="submit"
           className="button-primary u-full-width"
           placeholder="Define budget"
+          value = 'add budget'
         ></input>
       </form>
     </Fragment>

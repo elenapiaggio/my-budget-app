@@ -61,7 +61,7 @@ const FormBudget = ({ saveExpensive, saveCreateExpensive }) => {
           onChange={(e) => saveQuantity(parseInt(e.target.value))}
         />
       </div>
-      <input type="submit" className="button-primary u-full-width" />
+      <input type="submit" value = 'add expensive' className="button-primary u-full-width" />
     </form>
   );
 };
