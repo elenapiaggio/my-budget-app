@@ -15,20 +15,23 @@ const FormBudget = ( {addNewExpensive} ) => {
       saveError(true);
       return;
     }
-    saveError(false
-      )
+    saveError(false)
+
     // build the expensive
     const expensive = {
       expensiveName,
       quantity,
       id: shortid.generate()
     }
-    //console.log(expensive)
 
     // set expensive to principal component
-   addNewExpensive(expensive)
+   addNewExpensive(expensive);
+
     // reset form
+    saveExpensiveName('');
+    saveQuantity(0);
   }
+  
   return (
     <form
       onSubmit = {addExpensive}
