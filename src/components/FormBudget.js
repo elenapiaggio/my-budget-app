@@ -1,15 +1,32 @@
 import React, { useState } from "react";
+import Error from './Error';
+import shortid from 'shortid';
 
-const FormBudget = () => {
-  const [expensive, saveExpensive] = useState("");
-  const [quantity, saveQuantity] = useState(0);
+const FormBudget = ( {addNewExpensive} ) => {
+  const [ expensiveName, saveExpensiveName ] = useState("");
+  const [ quantity, saveQuantity ] = useState(0);
+  const [ error, saveError ] = useState(false);
 
   const addExpensive = (e) => {
     e.preventDefault();
 
     // validate
+    if(quantity < 1 || isNaN(quantity) || expensiveName.trim() === ''){
+      saveError(true);
+      return;
+    }
+    saveError(false
+      )
     // build the expensive
+    const expensive = {
+      expensiveName,
+      quantity,
+      id: shortid.generate()
+    }
+    //console.log(expensive)
+
     // set expensive to principal component
+   addNewExpensive(expensive)
     // reset form
   }
   return (
@@ -17,14 +34,17 @@ const FormBudget = () => {
       onSubmit = {addExpensive}
     >
       <h2>Add your expenses</h2>
+      {
+        error ? <Error message='Name and quantity are required'/> : false
+      }
       <div className="campo">
         <label>Expense</label>
         <input
           type="text"
           className="u-full-width"
           placeholder="TMB, Supermarket, Coffes ..."
-          value={expensive}
-          onChange={(e) => saveExpensive(e.target.value)}
+          value={expensiveName}
+          onChange={(e) => saveExpensiveName(e.target.value)}
         />
       </div>
       <div className="campo">
