@@ -3,7 +3,8 @@
 ## Description
 Project with React.js using hooks. This is an Single Page Application to manage a weekly budget.
 
-![Exercise-1](./src/img/demo.png)
+![Landing demo](./src/img/demo.png)
+![Expenses demo](./src/img/demo1.png)
 
 ## Scripts
 In the project directory, you can run:
